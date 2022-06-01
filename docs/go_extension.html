@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>go_extension package &mdash; go-extension 0.0.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="go_extension" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> go-extension
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">go_extension</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">go_extension package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-go_extension.build_ext">go_extension.build_ext module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-go_extension.compiler">go_extension.compiler module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-go_extension.exceptions">go_extension.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-go_extension.extension">go_extension.extension module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-go_extension">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">go-extension</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">go_extension</a> &raquo;</li>
+      <li>go_extension package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/go_extension.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="go-extension-package">
+<h1>go_extension package<a class="headerlink" href="#go-extension-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-go_extension.build_ext">
+<span id="go-extension-build-ext-module"></span><h2>go_extension.build_ext module<a class="headerlink" href="#module-go_extension.build_ext" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="go_extension.build_ext.build_ext">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">go_extension.build_ext.</span></span><span class="sig-name descname"><span class="pre">build_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Distribution</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#go_extension.build_ext.build_ext" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">build_ext</span></code></p>
+<p>Command <cite>build_ext</cite> able to build GoExtension.</p>
+<p>If you change <cite>go</cite> command, inherit this class and pass it to setuptools.setup() like this.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">go_extension</span> <span class="kn">import</span> <span class="n">build_ext</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">build_ext</span><span class="p">(</span><span class="n">build_ext</span><span class="o">.</span><span class="n">build_ext</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">go_command</span> <span class="o">=</span> <span class="s1">&#39;path/to/go(executable)&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">setup</span><span class="p">(</span><span class="n">cmdclass</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;build_ext&#39;</span><span class="p">:</span> <span class="n">build_ext</span><span class="p">})</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.build_ext.build_ext.build_extension">
+<span class="sig-name descname"><span class="pre">build_extension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Extension</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.build_ext.build_ext.build_extension" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.build_ext.build_ext.build_go">
+<span class="sig-name descname"><span class="pre">build_go</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><span class="pre">GoExtension</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.build_ext.build_ext.build_go" title="Permalink to this definition"></a></dt>
+<dd><p>Build GoExtension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ext</strong> (<a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><em>go_extension.extension.GoExtension</em></a>) – Go extension.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.build_ext.build_ext.go_command">
+<span class="sig-name descname"><span class="pre">go_command</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'go'</span></em><a class="headerlink" href="#go_extension.build_ext.build_ext.go_command" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.build_ext.build_ext.gopycompiler">
+<span class="sig-name descname"><span class="pre">gopycompiler</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#go_extension.compiler.GoPyCompiler" title="go_extension.compiler.GoPyCompiler"><span class="pre">GoPyCompiler</span></a></em><a class="headerlink" href="#go_extension.build_ext.build_ext.gopycompiler" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.build_ext.build_ext.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.build_ext.build_ext.run" title="Permalink to this definition"></a></dt>
+<dd><p>Build extensions in build directory, then copy if –inplace</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.build_ext.build_ext.should_skip_ext">
+<span class="sig-name descname"><span class="pre">should_skip_ext</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Extension</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#go_extension.build_ext.build_ext.should_skip_ext" title="Permalink to this definition"></a></dt>
+<dd><p>Return true if the extension should be skipped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ext</strong> (<em>setuptools.extension.Extension</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-go_extension.compiler">
+<span id="go-extension-compiler-module"></span><h2>go_extension.compiler module<a class="headerlink" href="#module-go_extension.compiler" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">go_extension.compiler.</span></span><span class="sig-name descname"><span class="pre">GoPyCompiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">go_command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'go'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#go_extension.compiler.GoPyCompiler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper class of command <cite>gopy</cite></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">https</span></code></dt><dd><p>//github.com/go-python/gopy</p>
+</dd>
+</dl>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><span class="pre">GoExtension</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.build" title="Permalink to this definition"></a></dt>
+<dd><p>Generate and compile (C)Python language bindings for Go.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> (<a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><em>go_extension.extension.GoExtension</em></a>) – Go extension.</p></li>
+<li><p><strong>output</strong> (<em>str</em><em> | </em><em>os.PathLike</em><em>[</em><em>str</em><em>]</em>) – Output directory for bindings.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">https</span></code></dt><dd><p>//github.com/go-python/gopy</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.dry_run">
+<span class="sig-name descname"><span class="pre">dry_run</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.dry_run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.env">
+<span class="sig-name descname"><span class="pre">env</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.env" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.force">
+<span class="sig-name descname"><span class="pre">force</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.force" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><span class="pre">GoExtension</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.generate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate (C)Python language bindings for Go.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> (<a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><em>go_extension.extension.GoExtension</em></a>) – Go extension.</p></li>
+<li><p><strong>output</strong> (<em>str</em><em> | </em><em>os.PathLike</em><em>[</em><em>str</em><em>]</em>) – Output directory for bindings.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">https</span></code></dt><dd><p>//github.com/go-python/gopy</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.go_command">
+<span class="sig-name descname"><span class="pre">go_command</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'go'</span></em><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.go_command" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.inplace">
+<span class="sig-name descname"><span class="pre">inplace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.inplace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.install_build_tools">
+<span class="sig-name descname"><span class="pre">install_build_tools</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.install_build_tools" title="Permalink to this definition"></a></dt>
+<dd><p>Install gopy, goimports, and pybindgen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#go_extension.exceptions.GoNotFoundError" title="go_extension.exceptions.GoNotFoundError"><strong>go_extension.exceptions.GoNotFoundError</strong></a> – If <cite>go</cite> command not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.spawn">
+<span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Run another program, specified as a command list ‘cmd’, in a new process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cmd</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Argument list for the new proce.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.compiler.GoPyCompiler.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.compiler.GoPyCompiler.verbose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-go_extension.exceptions">
+<span id="go-extension-exceptions-module"></span><h2>go_extension.exceptions module<a class="headerlink" href="#module-go_extension.exceptions" title="Permalink to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="go_extension.exceptions.GoNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">go_extension.exceptions.</span></span><span class="sig-name descname"><span class="pre">GoNotFoundError</span></span><a class="headerlink" href="#go_extension.exceptions.GoNotFoundError" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raises when <cite>go</cite> command not found.</p>
+</dd></dl>
+
+</section>
+<section id="module-go_extension.extension">
+<span id="go-extension-extension-module"></span><h2>go_extension.extension module<a class="headerlink" href="#module-go_extension.extension" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="go_extension.extension.GoExtension">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">go_extension.extension.</span></span><span class="sig-name descname"><span class="pre">GoExtension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#go_extension.extension.GoExtension" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Extension</span></code></p>
+<p>Extension written in Go language.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">go_extension</span> <span class="kn">import</span> <span class="n">GoExtension</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ext</span> <span class="o">=</span> <span class="n">GoExtension</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;hello_go&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;github.com/hinihat/go-extension-python/hello&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">setup</span><span class="p">(</span><span class="n">ext_modules</span><span class="o">=</span><span class="p">[</span><span class="n">ext</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.extension.GoExtension.depends">
+<span class="sig-name descname"><span class="pre">depends</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#go_extension.extension.GoExtension.depends" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.extension.GoExtension.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#go_extension.extension.GoExtension.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="go_extension.extension.GoExtension.original_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">original_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#go_extension.extension.GoExtension.original_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="go_extension.extension.GoExtension.packages">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">packages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#go_extension.extension.GoExtension.packages" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence of Go package.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.extension.GoExtension.sources">
+<span class="sig-name descname"><span class="pre">sources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#go_extension.extension.GoExtension.sources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-go_extension">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-go_extension" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="go_extension.GoExtension">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">go_extension.</span></span><span class="sig-name descname"><span class="pre">GoExtension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#go_extension.GoExtension" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Extension</span></code></p>
+<p>Extension written in Go language.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">go_extension</span> <span class="kn">import</span> <span class="n">GoExtension</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ext</span> <span class="o">=</span> <span class="n">GoExtension</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;hello_go&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;github.com/hinihat/go-extension-python/hello&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">setup</span><span class="p">(</span><span class="n">ext_modules</span><span class="o">=</span><span class="p">[</span><span class="n">ext</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoExtension.depends">
+<span class="sig-name descname"><span class="pre">depends</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#go_extension.GoExtension.depends" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoExtension.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#go_extension.GoExtension.name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="go_extension.GoExtension.original_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">original_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#go_extension.GoExtension.original_name" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="go_extension.GoExtension.packages">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">packages</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#go_extension.GoExtension.packages" title="Permalink to this definition"></a></dt>
+<dd><p>Sequence of Go package.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoExtension.sources">
+<span class="sig-name descname"><span class="pre">sources</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#go_extension.GoExtension.sources" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">go_extension.</span></span><span class="sig-name descname"><span class="pre">GoPyCompiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">go_command</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'go'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#go_extension.GoPyCompiler" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper class of command <cite>gopy</cite></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">https</span></code></dt><dd><p>//github.com/go-python/gopy</p>
+</dd>
+</dl>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><span class="pre">GoExtension</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.GoPyCompiler.build" title="Permalink to this definition"></a></dt>
+<dd><p>Generate and compile (C)Python language bindings for Go.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> (<a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><em>go_extension.extension.GoExtension</em></a>) – Go extension.</p></li>
+<li><p><strong>output</strong> (<em>str</em><em> | </em><em>os.PathLike</em><em>[</em><em>str</em><em>]</em>) – Output directory for bindings.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">https</span></code></dt><dd><p>//github.com/go-python/gopy</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.dry_run">
+<span class="sig-name descname"><span class="pre">dry_run</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.GoPyCompiler.dry_run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.env">
+<span class="sig-name descname"><span class="pre">env</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#go_extension.GoPyCompiler.env" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.force">
+<span class="sig-name descname"><span class="pre">force</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.GoPyCompiler.force" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><span class="pre">GoExtension</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">PathLike</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.GoPyCompiler.generate" title="Permalink to this definition"></a></dt>
+<dd><p>Generate (C)Python language bindings for Go.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ext</strong> (<a class="reference internal" href="#go_extension.extension.GoExtension" title="go_extension.extension.GoExtension"><em>go_extension.extension.GoExtension</em></a>) – Go extension.</p></li>
+<li><p><strong>output</strong> (<em>str</em><em> | </em><em>os.PathLike</em><em>[</em><em>str</em><em>]</em>) – Output directory for bindings.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">https</span></code></dt><dd><p>//github.com/go-python/gopy</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.go_command">
+<span class="sig-name descname"><span class="pre">go_command</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'go'</span></em><a class="headerlink" href="#go_extension.GoPyCompiler.go_command" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.inplace">
+<span class="sig-name descname"><span class="pre">inplace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.GoPyCompiler.inplace" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.install_build_tools">
+<span class="sig-name descname"><span class="pre">install_build_tools</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.GoPyCompiler.install_build_tools" title="Permalink to this definition"></a></dt>
+<dd><p>Install gopy, goimports, and pybindgen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#go_extension.exceptions.GoNotFoundError" title="go_extension.exceptions.GoNotFoundError"><strong>go_extension.exceptions.GoNotFoundError</strong></a> – If <cite>go</cite> command not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.spawn">
+<span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#go_extension.GoPyCompiler.spawn" title="Permalink to this definition"></a></dt>
+<dd><p>Run another program, specified as a command list ‘cmd’, in a new process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>cmd</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – Argument list for the new proce.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="go_extension.GoPyCompiler.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#go_extension.GoPyCompiler.verbose" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="go_extension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Shuhei Nitta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

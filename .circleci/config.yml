@@ -1,0 +1,77 @@
+# Copyright (c) 2022 Shuhei Nitta. All rights reserved.
+version: 2.1
+
+orbs:
+  python: circleci/python@1.5.0
+
+jobs:
+  test: 
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - run:
+          name: Install golang
+          command: |
+            GO_VERSION=1.18.2
+            wget https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz
+            tar -C $HOME -xzf go$GO_VERSION.linux-amd64.tar.gz
+            echo 'export PATH=$PATH:$HOME/go/bin' >> $BASH_ENV
+            echo 'export GOPATH=$HOME/go' >> $BASH_ENV
+      - run:
+          name: Install go packages
+          command: |
+            go install github.com/go-python/gopy@latest
+            go install golang.org/x/tools/cmd/goimports@latest
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run mypy
+          command: mypy .
+      - run:
+          name: Run unittests
+          command: coverage run -m unittest
+      - run:
+          name: Report coverage
+          command: coverage report
+  publish:
+    docker:
+      - image: cimg/python:3.10
+    steps:
+      - checkout
+      - run:
+          name: Verify git-tag vs. version
+          command: |
+            APP_VERSION=$(python setup.py --version)
+            if [ "$CIRCLE_TAG" != "$APP_VERSION" ]; then
+              echo "Git tag: $CIRCLE_TAG doesn't match the version of this app, $APP_VERSION"
+              exit 1
+            fi
+      - run:
+          name: Install dependencies
+          command: pip install setuptools wheel twine
+      - run:
+          name: Build distributions
+          command: python setup.py sdist
+      - run:
+          name: Init .pypirc
+          command: |
+            echo "[pypi]" >> ~/.pypirc
+            echo "username = $PYPI_USERNAME" >> ~/.pypirc
+            echo "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - run:
+          name: Upload to pypi
+          command: twine upload -r pypi dist/*
+
+workflows:
+  test:
+    jobs:
+      - test
+  publish:
+    jobs:
+      - publish:
+          filters:
+            tags:
+              only: /^[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/

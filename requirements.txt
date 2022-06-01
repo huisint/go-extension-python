@@ -1,0 +1,11 @@
+pybindgen
+
+# For dev
+mypy
+coverage
+flake8
+black
+
+# For docs
+sphinx
+sphinx-rtd-theme
